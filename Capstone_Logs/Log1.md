@@ -1,7 +1,15 @@
 # Log 1
+
+
 Session Start: `04-05-20 15:38`
+
+
 Session End: `04-05-20 19:27`
+
+
 Time: `4:11`
+
+
 ---
 # What I Did
 
