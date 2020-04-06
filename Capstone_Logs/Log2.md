@@ -1,7 +1,11 @@
 # Log 2
+
 Session Start: `04-06-20 01:48`
+
 Session End: `04-06-20 03:35`
+
 Time: `1:47`
+
 ---
 # What I Did
 Unfortunately, I forgot to commit all of my changes from yesterday :) so [Log1](../Capstone_Logs/Log1.md) and Log2 will be placed under the same commit.
