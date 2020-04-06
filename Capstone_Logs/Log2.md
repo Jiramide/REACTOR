@@ -9,7 +9,6 @@ Session End: `04-06-20 03:35`
 
 Time: `1:47`
 
----
 # What I Did
 Unfortunately, I forgot to commit all of my changes from yesterday :) so [Log1](../Capstone_Logs/Log1.md) and Log2 will be placed under the same commit.
 
@@ -20,7 +19,9 @@ In terms of the player movement, I was aiming to replicate Delayed Auto Shift. W
 The player movement code tries to replicate that effect, and does succeed somewhat. This is the 4th iteration of the player movement code and it's the only iteration which is somewhat decent and functioning. The problem comes with distinguishing between a held input and a fast-tapped input. I can't simply put a debounce on the movement code because optimally, if you furiously tap on your W key, your player should move for each key press (hyper-tapping), but if you hold down your W key, the player should move as well, but in discrete time steps. The current iteration solves that problem, but the delay portion of the Delayed Auto Shift isn't something trivial to implement nicely either. As of this session, it can handle hyper-tapping and held-inputs but there isn't a delay quite yet (if you hold down the input, instead of having the intial-pause-continuous, it goes straight to continuous) which makes it quite awkward. Not too excited to work on the 5th iteration, but that's something far down in the priority list. If it works, then it works.
 
 Furious tapping (hyper-tapping) below
+
 ![Hyper Tapping](../Capstone_Logs/Resources/Log2/HyperTapping.gif "tappity tap tap.")
 
 Held input below
+
 ![Held Input](../Capstone_Logs/Resources/Log2/HeldInput.gif "Now I need a one tap.")

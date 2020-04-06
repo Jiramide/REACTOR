@@ -9,7 +9,6 @@ Session End: `04-05-20 19:27`
 
 Time: `4:11`
 
----
 # What I Did
 
 This session was mostly one to toy around with ideas and come up with what I'm beginning to design. A game design document has not yet been created (since this is a brand new idea that I'm toying with), and I lost passion with continuing on Rhythm-Intersect due to the lack of resources surrounding rhythm games and their creation. REACTOR is a new game idea which is a puzzle game rather than a rhythm game.
