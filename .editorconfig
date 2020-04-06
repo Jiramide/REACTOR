@@ -1,0 +1,16 @@
+# Based on https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions
+# All C# code present in this project will follow the conventions that
+# Microsoft has listed above in the documentation.
+# Rules in the .editorconfig will be written to best match
+# said conventions, and anoter linter would be used for other
+# conventions that cannot be linted against using .editorconfig alone.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
