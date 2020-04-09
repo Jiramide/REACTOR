@@ -14,14 +14,9 @@ public class Pushable : MonoBehaviour
         if (Physics.Raycast(transform.position, movementVector, out hitInfo, 1.0f))
         {
             GameObject objectHit = hitInfo.transform.gameObject;
-            if (objectHit.CompareTag("Pushable"))
-            {
-                allowedToMove = objectHit.GetComponent<Pushable>().Push(movementVector);
-            }
-            else if (objectHit.CompareTag("Wall"))
-            {
-                allowedToMove = false;
-            }
+            Pushable objectPushable = objectHit.GetComponent<Pushable>();
+
+            allowedToMove = objectPushable != null && objectPushable.Push(movementVector);
         }
 
         if (allowedToMove)
