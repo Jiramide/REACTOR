@@ -4,10 +4,10 @@
 Session Start: `04-08-20 22:10`
 
 
-Session End: `04-06-20 03:35`
+Session End: `04-09-20 02:35`
 
 
-Time: `1:47`
+Time: `4:25`
 
 # What I Did
 Pushing! Pushing! Pushing!
