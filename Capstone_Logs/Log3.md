@@ -32,7 +32,7 @@ It took me a while to actually come up with the design of the [`Pushable`](pusha
 
 
 
-![Happy Lil Guy](../Capstone_Logs/Resouces/Log3/HappyLilGuy.png "Happy Lil Guy")
+![Happy Lil Guy](../Capstone_Logs/Resources/Log3/HappyLilGuy.png "Happy Lil Guy")
 
 
-pushable_link: ../Assets/Scripts/Pushable.cs
+[pushable_link]: ../Assets/Scripts/Pushable.cs
