@@ -16,7 +16,7 @@ public class Pushable : MonoBehaviour
             GameObject objectHit = hitInfo.transform.gameObject;
             Pushable objectPushable = objectHit.GetComponent<Pushable>();
 
-            allowedToMove = objectPushable != null && objectPushable.Push(movementVector);
+            allowedToMove = objectPushable?.Push(movementVector) ?? false;
         }
 
         if (allowedToMove)
