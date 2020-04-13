@@ -77,7 +77,11 @@ I also know the source of this bug: it's a side effect of how `Pushable` works. 
 
 2) When an object `C` is adjacent to another object `D` and `C` is pushed towards `D`, `D` will also get pushed. This creates a multi-pushing effect.
 ```
-[C][D] -- C gets pushed, C tells D to also get pushed --> [C] --> [D] -- C moves now that D is out of the way --> --> [C][D}
+[C][D]
+C gets pushed, C tells D to also get pushed
+[C] --> [D]
+C moves now that D is out of the way
+-->  [C][D]
 ```
 
 Now we have the bread and butter of the `Pushable` component explained above, the source of the problem comes from a combination of both. In the gif above, `Green` is executing 1) on `Red`, pushing `Red` one unit. This makes sense as this is the intended behaviour. Now that both `Red` and `Green` are out of the way, the player can now move and thus moves. Since the player is also a `Pushable`, the player applies the same mechanics listed above; the player invokes 1) on `Blue`, thus pushing `Blue` in the same direction of the player movement. Here is where the problem lies: `Blue` is now pushed, which means that if certain conditions are met, it will invoke either 1) or 2), and it does meet said certain conditions. `Blue` invokes 2) on `Red`, thus pushing `Red` again for a second time, causing a double push. This results in `Red` travelling two units while all the other entities only travelled one unit.
@@ -122,6 +126,7 @@ Conclusion:
        ????
 
        ????
-       ????```
+       ????
+```
 
 I'm exhausted.
