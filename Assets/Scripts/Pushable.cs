@@ -18,6 +18,7 @@ public class Pushable : MonoBehaviour
         RaycastHit movementHit;
         bool allowedToMove = true;
 
+
         if (Physics.Raycast(transform.position, movementVector, out movementHit, 1.0f))
         {
             GameObject objectHit = movementHit.transform.gameObject;
@@ -26,14 +27,14 @@ public class Pushable : MonoBehaviour
 
         if (allowedToMove)
         {
-            transform.Translate(movementVector);
-
             RaycastHit carryInfo;
             if (Physics.Raycast(transform.position, Vector3.up, out carryInfo, 1.0f))
             {
                 GameObject objectCarrying = carryInfo.transform.gameObject;
                 PromptPush(objectCarrying, movementVector);
             }
+
+            transform.Translate(movementVector);
         }
 
         return allowedToMove;
