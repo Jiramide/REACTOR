@@ -15,11 +15,13 @@ public class Pushable : MonoBehaviour
     public bool Push(Vector3 movementVector)
     {
 
+        Debug.Log("push " + gameObject.name + " dir " + movementVector);
+
         RaycastHit movementHit;
         bool allowedToMove = true;
+        Vector3 raycastOrigin = transform.position;
 
-
-        if (Physics.Raycast(transform.position, movementVector, out movementHit, 1.0f))
+        if (Physics.Raycast(raycastOrigin, movementVector, out movementHit, 0.5f))
         {
             GameObject objectHit = movementHit.transform.gameObject;
             allowedToMove = PromptPush(objectHit, movementVector);
@@ -28,7 +30,7 @@ public class Pushable : MonoBehaviour
         if (allowedToMove)
         {
             RaycastHit carryInfo;
-            if (Physics.Raycast(transform.position, Vector3.up, out carryInfo, 1.0f))
+            if (Physics.Raycast(raycastOrigin, Vector3.up, out carryInfo, 0.5f))
             {
                 GameObject objectCarrying = carryInfo.transform.gameObject;
                 PromptPush(objectCarrying, movementVector);
