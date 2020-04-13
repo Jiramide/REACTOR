@@ -85,16 +85,19 @@ Now we have the bread and butter of the `Pushable` component explained above, th
 Here's the problem: 2) only invokes if and only if the two objects are adjacent to each other. `Pushable` again uses `Physics.Raycast` in order to determine whether something is adjacent or not in this line: `Physics.Raycast(raycastOrigin, movementVector, out movementHit, 0.5f)`. Here is a diagram of what that line does
 
 ![Fig. 1 Adjacent](../Capstone_Logs/Resources/Log5/Fig1Adjacent.png "These two blocks are adjacent, the raycast hits the other block.")
+
 _Fig. 1_
 
 In `Fig. 1`, you can see that both the objects are adjacent to each other, so the raycast (the line) hits and detects correctly.
 
 ![Fig. 2 Not Adjacent](../Capstone_Logs/Resources/Log5/Fig2NotAdjacent.png "These two blocks are not adjacent, the raycast does not hit.")
+
 _Fig. 2_
 
 In `Fig. 2`, you can see that the objects are not adjacent, thus the raycast is not long enough to hit the other block and detects that there is no adjacent objects.
 
 Here is what is happening when the pushing occurs (`push` here means invoking 1) and 2) if conditions are met, `move` here means actually moving)
+
 ![Push Sequence](../Capstone_Logs/Resources/Log5/PushSequence.png)
 
 What we see in the sequence above is that `move Red` occurs before `push Blue`; this means that once `push Blue` is executed, `Red` is not adjacent anymore and thus should not invoke 2). Even the positions of the object that this time-frame agree with that conclusion: `Blue` and `Red` are not adjacent once `push Blue` occurs.
