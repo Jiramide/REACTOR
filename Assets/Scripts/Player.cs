@@ -11,11 +11,19 @@ public class Player : MonoBehaviour
     private bool isDASActive = false;
     private float lastInputConsumed = 0.0f;
 
+    private Vector3 movementVector;
     private Pushable playerPushable;
 
     private void Start()
     {
         playerPushable = GetComponent<Pushable>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (movementVector == Vector3.zero) return;
+        playerPushable.Push(movementVector);
+        movementVector = Vector3.zero;
     }
 
     private void Update()
@@ -46,8 +54,7 @@ public class Player : MonoBehaviour
             unitToConsume = verticalUnit;
         }
 
-        Vector3 movementVector = axisToConsume * unitToConsume;
-        playerPushable.Push(movementVector);
+        movementVector = axisToConsume * unitToConsume;
 
     }
 

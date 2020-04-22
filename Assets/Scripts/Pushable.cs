@@ -5,6 +5,13 @@ using UnityEngine;
 public class Pushable : MonoBehaviour
 {
 
+    private LevelLayout grid;
+    private void Start()
+    {
+        grid = LevelLayout.GetInstance();
+        grid.AddEntity(gameObject);
+    }
+
     private bool PromptPush(GameObject objectToPush, Vector3 pushDirection)
     {
         return objectToPush.GetComponent<Pushable>()
@@ -12,34 +19,47 @@ public class Pushable : MonoBehaviour
             ?? false;
     }
 
+    private GameObject getAdjacent(Vector3 offset)
+    {
+        Vector3 adjacentPos = transform.position + offset;
+
+        return grid.GetAt((int) adjacentPos.x, (int) adjacentPos.y, (int) adjacentPos.z);
+    }
+
     public bool Push(Vector3 movementVector)
     {
 
-        Debug.Log("push " + gameObject.name + " dir " + movementVector);
-
-        RaycastHit movementHit;
         bool allowedToMove = true;
-        Vector3 raycastOrigin = transform.position;
+        bool moveSuccess = false;
+        GameObject objectPushed = getAdjacent(movementVector);
 
-        if (Physics.Raycast(raycastOrigin, movementVector, out movementHit, 0.5f))
+        if (objectPushed != null)
         {
-            GameObject objectHit = movementHit.transform.gameObject;
-            allowedToMove = PromptPush(objectHit, movementVector);
+            allowedToMove = PromptPush(objectPushed, movementVector);
         }
 
         if (allowedToMove)
         {
-            RaycastHit carryInfo;
-            if (Physics.Raycast(raycastOrigin, Vector3.up, out carryInfo, 0.5f))
+            GameObject objectCarried = getAdjacent(Vector3.up);
+            if (objectCarried != null)
             {
-                GameObject objectCarrying = carryInfo.transform.gameObject;
-                PromptPush(objectCarrying, movementVector);
+                PromptPush(objectCarried, movementVector);
             }
 
-            transform.Translate(movementVector);
+            moveSuccess = grid.MoveObject(
+                gameObject,
+                (int) (transform.position.x + movementVector.x),
+                (int) (transform.position.y + movementVector.y),
+                (int) (transform.position.z + movementVector.z)
+            );
+
+            if (moveSuccess)
+            {
+                transform.Translate(movementVector);
+            }
         }
 
-        return allowedToMove;
+        return allowedToMove && moveSuccess;
     }
 
 }
